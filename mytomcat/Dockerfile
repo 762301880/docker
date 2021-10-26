@@ -19,7 +19,7 @@ RUN tar -zxvf apache-tomcat-9.0.54.tar.gz \
 
 # 设置环境变量
 ENV MYPATH /usr/local
-# 设置工作目录 变量是上面设置的环境变量
+# 设置工作目录 变量是上面设置的环境变量(使用命令进入容器的时候就是这个目录)
 WORKDIR $MYPATH
 # 设置java环境变量
 ENV JAVA_HOME /usr/local/jdk1.8.0_151
