@@ -4,16 +4,18 @@ FROM centos:latest
 MAINTAINER yaoliuyang<762301880@qq.com>
 
 # 安装wget 下载 环境包
-RUN      yum -y install vim \
-         && yum -y install wget \
-         && wget https://mirrors.cnnic.cn/apache/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz \
-         && wget https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz
+RUN yum -y install vim \
+    && yum -y install wget \
+    && wget https://mirrors.cnnic.cn/apache/tomcat/tomcat-9/v9.0.54/bin/apache-tomcat-9.0.54.tar.gz \
+    && wget https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz
 
-# ADD 命令会自动解压压缩文件 把tomcat&jdk放到想要的目录
+# 解压文件 && 转移文件到想要的目录 && 删除源文件
 RUN tar -zxvf apache-tomcat-9.0.54.tar.gz \
      && mv apache-tomcat-9.0.54 /usr/local/ \
+     && rm -rf /apache-tomcat-9.0.54.tar.gz \
      && tar -zxvf  jdk-8u151-linux-x64.tar.gz \
-     && mv /usr/local/
+     && mv jdk1.8.0_151 /usr/local/ \
+     && rm -rf /jdk-8u151-linux-x64.tar.gz
 
 # 设置环境变量
 ENV MYPATH /usr/local
