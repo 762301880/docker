@@ -17,7 +17,7 @@ RUN yum -y  update \
 RUN yum -y install libxml2-devel \
      sqlite-devel \
       # 下载源码包
-      && wget  https://www.php.net/distributions/php7.4.3.tar.gz --no-check-certificate \
+      && wget https://www.php.net/distributions/php-7.4.3.tar.gz --no-check-certificate \
       # 解压 & 进入
       && tar -zxvf  php-7.4.3.tar.gz \
       && cd php-7.4.3 \
@@ -26,6 +26,6 @@ RUN yum -y install libxml2-devel \
       && make \
       && make install \
       && ln -s /usr/local/php7.4.3/bin/php  /usr/bin/php \
-      && cp /php7.4.3/php.ini-development /usr/local/php7.4.3/lib/php.ini \
+      && cp /php-7.4.3/php.ini-development /usr/local/php7.4.3/lib/php.ini \
       && rm -rf /php-7.4.3 \
       && rm -rf /php-7.4.3.tar.gz \
